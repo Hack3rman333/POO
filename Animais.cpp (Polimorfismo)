@@ -1,0 +1,76 @@
+#include <string>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
+
+using namespace std;
+
+class Animal {
+    protected:
+        string nome;
+        int idade;
+        string som;
+    public:
+        Animal(string n = "", int i = 0){
+            nome  = n;
+            idade = i;
+            cout << "Criando animal (" << nome << ")" << endl;
+        }
+        ~Animal(){
+            cout << "Destruindo animal (" << nome << ")" << endl;
+        }
+
+        string obtemNome(){
+            return nome;
+        }
+    
+
+        int obtemIdade(){
+            return idade;
+        }
+
+        virtual string emiteSom() = 0;
+}; 
+
+    class Cachorro : public Animal{
+        
+        public:
+            Cachorro(string n, int i) : Animal(n, i){}
+            string emiteSom(){ return "Au-Au"; }
+    };
+
+    class Gato : public Animal{
+        
+        public:
+            Gato(string n, int i) : Animal(n, i){}
+            string emiteSom(){ return "Miau"; }
+    };
+
+    class Passaro : public Animal{
+
+        public:
+            Passaro(string n, int i) : Animal(n, i){}
+            string emiteSom(){ return "Piu-Piu"; }
+    };
+
+int main(){
+    Animal *vet[6];
+    vet[0] = new Cachorro("Golden", 2);
+    vet[1] = new Cachorro("Pitbull", 1);
+    vet[2] = new Passaro("Calopsita", 5);
+    vet[3] = new Gato("Levicoi", 1);
+    vet[4] = new Passaro("Arara", 8);
+    vet[5] = new Gato("Persa", 6);
+
+    int numAnimais = sizeof(vet) / sizeof(Animal *);
+     
+    for(int i = 0; i < numAnimais; i++){
+       
+        cout << "Nome: " << vet[i]->obtemNome() << " | Idade: " << vet[i]->obtemIdade() << "| Som: " << vet[i]->emiteSom() << endl;
+    }
+
+    for ( int i =0; i < numAnimais; ++ i){
+        delete vet [i ];
+    }
+    return 0;
+}
