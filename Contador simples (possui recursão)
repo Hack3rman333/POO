@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Contador{
+    private:
+        int valor;
+    public:
+
+        Contador(int v = 0){
+             valor = v;
+        }
+        ~Contador(){}
+
+        int obtemValor(){ return valor; }
+        void defineValor(int v){
+            valor = v;
+        }
+        void incrementa(){        
+            valor += 1;
+
+            /* if(valor = 10) return
+
+                valor += 1;         // utiliza recursão até o valor ser igual a 10, criando uma especie de loop dentro do método
+                incrementa();
+
+
+             */
+        }
+};
+
+int main(){
+    Contador contador;
+
+    int n1;
+    Contador *n2 = new Contador(10); // cria um ponteiro da classe com valor incial 10;
+        cin >> n1;
+        contador.defineValor(n1);   // envia o valor de n1 para definir como valor dentro da classe;
+        contador.incrementa();      // incrementa em 1 o n1;
+
+        n2->incrementa(); // aponta para o método e incrementa +1 (resultado = 11);
+            cout << n2->obtemValor() << endl;
+
+        n2->incrementa(); // aponta para o método e incrementa +1 (resultado = 12);
+            cout << n2->obtemValor() << endl;
+
+
+        cout << contador.obtemValor() << endl; // valor do n1 (resposta = 6)
+
+
+    return 0;
+}
