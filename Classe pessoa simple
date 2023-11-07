@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+class Pessoa{
+    private:
+        string nome;
+        int idade;
+        float altura;
+    public:
+        Pessoa(string n = "", int i = 0, float a = 0.0){
+            nome   = n;
+            idade  = i;
+            altura = a;
+        }
+        ~Pessoa(){}
+
+        
+        void defineNome(string n){
+            nome = n;
+        }
+        void defineIdade(int i){
+            idade = i;
+        }
+        void defineAltura(float a){
+            altura = a;
+        }
+
+        string str(){
+            stringstream ss;
+
+            ss << "Nome: " << nome << " | " << " Idade: " << idade << " | " << "Altura: " << altura << endl;
+
+            return ss.str(); 
+        }
+        
+
+};
+
+int main(){
+    Pessoa pessoa1;
+    Pessoa pessoa2;
+    Pessoa pessoa3;
+
+        pessoa1.defineNome("Antonio");
+        pessoa1.defineIdade(21);
+        pessoa1.defineAltura(175);
+
+        cout << pessoa1.str() << endl;
+
+        pessoa2.defineNome("Pedro");
+        pessoa2.defineIdade(20);
+        pessoa2.defineAltura(174);
+
+        cout << pessoa2.str() << endl;
+
+        pessoa3.defineNome("Nathan");
+        pessoa3.defineIdade(19);
+        pessoa3.defineAltura(178);
+
+        cout << pessoa3.str() << endl;
+}
