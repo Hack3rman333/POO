@@ -1,0 +1,99 @@
+#include <iostream>
+#include <string>
+#include <sstream>
+
+using namespace std;
+
+class Elevador{
+    private:
+        int atual;
+        int total;
+        int capacidade;
+        int presentes;
+    public:
+
+        Elevador(int a = 0, int t = 0, int c = 0, int p = 0){
+            atual = a;
+            total = t;
+            capacidade = c;
+            presentes = p;
+        }
+        ~Elevador(){}
+
+        void inicializa(int c, int t){
+            capacidade = c;
+            total = t;
+        }   
+
+        void entra(){
+            if(capacidade <= presentes) return;
+
+            presentes++;
+            
+        }
+
+        void sai(){
+            presentes--;
+        }
+
+        void sobe(){
+            if(total <= atual) return;
+
+            atual++;
+        }
+
+        void desce(){
+            atual--;
+        }
+
+        int obtemAtual(){
+            return atual;
+        }
+        int obtemTotal(){
+            return total;
+        }
+        int obtemCapacidade(){
+            return capacidade;
+        }
+        int obtemPresentes(){
+            return presentes;
+        }
+};
+
+int main(){
+    Elevador elevador;
+    int c = 0, t = 0;
+
+    cin >> c >> t;
+
+    elevador.inicializa(c, t);
+
+    /* elevador.sobe();
+    cout << elevador.obtemAtual() << endl;
+    elevador.sobe();
+    cout << elevador.obtemAtual() << endl;
+    elevador.sobe();
+    cout << elevador.obtemAtual() << endl;
+    elevador.sobe();
+    cout << elevador.obtemAtual() << endl; */
+    
+
+    
+    
+
+    /* elevador.entra();
+        cout << elevador.obtemPresentes() << endl;
+    elevador.entra();
+        cout << elevador.obtemPresentes() << endl;
+    elevador.entra();
+        cout << elevador.obtemPresentes() << endl;
+ */
+
+
+    
+
+
+
+
+    return 0;
+}
