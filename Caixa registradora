@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Registradora {
+    private:
+        int numItens;
+        double preco;
+    public:
+        Registradora(int n = 0, double p = 0){
+            numItens = n;
+            preco = p;
+        }
+
+        double obtemTotal(){
+            return preco;
+        }
+        void adicionaItem(double p){
+            preco += p;
+            numItens++;
+        }
+
+        int obtemNumItens(){
+            return numItens;
+        }
+        
+        void limpa(){
+            numItens = 0;
+            preco = 0.0;
+        }
+};
+
+    int main () {
+Registradora * caixa = new Registradora();
+
+
+caixa->adicionaItem (1.99) ; // Adiciona primeiro item
+cout << caixa->obtemTotal() << endl;
+
+caixa->adicionaItem (2.99) ; // Adiciona segundo item
+cout << caixa->obtemTotal() << endl;
+
+caixa->adicionaItem (1.50) ; // Adiciona terceiro item
+cout << caixa->obtemTotal () << endl ; // Saida : 6.48
+
+
+cout << caixa->obtemNumItens () << endl ; // Saida : 3
+
+caixa->limpa ();
+
+cout << caixa->obtemTotal() << endl ;; // Saida : 0
+cout << caixa->obtemNumItens() << endl ; // Saida : 0
+
+delete caixa;
+
+Registradora caixa2 ;
+
+caixa2.adicionaItem(123.456) ;
+
+cout << caixa2.obtemTotal() << endl ;
+
+cout << caixa2.obtemNumItens() << endl ;
+return 0;
+}
