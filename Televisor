@@ -1,0 +1,79 @@
+#include <iostream>
+
+using namespace std;
+
+class Televisor{
+    private:
+        int canal;
+        int volume;
+    public:
+        Televisor(int c = 0, int v = 0){
+            canal = c;
+            volume = v;
+        }
+        ~Televisor(){}
+
+        int obtemVolume(){ return volume; }
+        void aumentaV(){
+            if(volume < 100) { volume++; }
+            else
+             volume = 100; }
+        void diminuiV(){
+            if(volume > 0){ volume--; }
+            else
+             volume = 0; }
+
+
+        int obtemCanal(){ return canal; }
+        void defineCanal(int c){
+            canal = c;
+        }
+        void aumentaC(){ 
+            
+            canal++; }
+        void diminuiC(){ 
+            if(canal > 0){ canal--; }
+            else
+            canal = 0; }
+
+};
+
+int main(){
+    Televisor televisor;
+    char n;
+    int c = 0;
+
+        while(n != '.'){
+            cin >> n;
+            switch(n){
+                case '+':
+                    televisor.aumentaV();
+                    break;
+                case '-':
+                    televisor.diminuiV();
+                    break;
+                case ',':
+                    cout << televisor.obtemVolume() << endl;
+                    break;
+                case '<':
+                    televisor.aumentaC();
+                    break;
+                case '>':
+                    televisor.diminuiC();
+                    break;
+                case '/':
+                    cin >> c;
+                    televisor.defineCanal(c);
+                    break;
+                case '~':
+                    cout << televisor.obtemCanal() << endl;
+                
+                case '.':
+                    break;
+            }
+
+        }
+
+    
+  return 0;
+}
