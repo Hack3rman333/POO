@@ -1,0 +1,43 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+class Carro{
+    private:
+        int tanque;
+        int distancia;
+    public:
+
+        Carro(int t = 0){
+            tanque = 0;
+        }
+
+        int obtemTanque(){ return tanque; }
+        void abasteceTanque(int t){
+            if(t >= 50){
+                t = 50;
+            }
+            tanque = t;
+        }
+
+        int obtemDistancia(){ return distancia; }
+        void calculaDistancia(int d){
+            tanque -= (d / 15);
+        }
+        
+
+};
+
+int main(){
+    int t;
+    int d;
+    Carro carro;
+
+    cin >> t >> d;
+
+    carro.abasteceTanque(t);
+    carro.calculaDistancia(d);
+
+    cout << carro.obtemTanque() << endl;
+}
