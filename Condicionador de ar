@@ -1,0 +1,63 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+    class Condicionador{
+        private:
+            int potencia;
+            float temperatura;
+            float temperaturaExterna;
+        public:
+            Condicionador(int p = 0){
+                potencia = p;
+            }
+
+
+            float obtemTemperatura(){
+                return temperatura;
+            }
+
+            float obtemTemperaturaExterna(){
+                return temperaturaExterna;
+            }
+            void defineTemperaturaExterna(int t){
+                temperaturaExterna = t - temperatura;
+            }
+
+            void definePotencia(int p){
+                if(p > 10){
+                    p = 10;
+                }
+                    temperatura = p * 1.8;
+            }
+
+    };
+
+    int main(){
+        int n1;
+        int n2;
+        int t1;
+        int t2;
+        Condicionador condicionador1;
+        Condicionador condicionador2;
+
+        cin >> n1;
+        cin >> t1;
+        condicionador1.definePotencia(n1);
+        condicionador1.defineTemperaturaExterna(t1);
+        cout << condicionador1.obtemTemperaturaExterna() << endl;
+        cout << condicionador1.obtemTemperatura() << endl;
+
+        cin >> n2;
+        cin >> t2;
+        condicionador2.definePotencia(n2);
+        condicionador2.defineTemperaturaExterna(t2);
+        cout << condicionador2.obtemTemperaturaExterna() << endl;
+        cout << condicionador2.obtemTemperatura() << endl;
+
+
+
+        return 0;
+
+    }
