@@ -1,0 +1,73 @@
+#include <iostream>
+#include <sstream>
+
+using namespace std;
+
+class Relogio{
+    private:
+        int hora;
+        int minuto;
+        int segundo;
+    public:
+
+        Relogio(int h = 0, int m = 0, int s = 0){
+            hora = h;
+            minuto = m;
+            segundo = s;
+        }
+
+
+        void defineHora(int h, int m, int s){
+            if(h >= 24){
+                h -= 24;
+            }
+
+            if(m >= 60){
+                h++;
+                m = 0;
+            }
+            if(s >= 60){
+                m++;
+                s = 0;
+            }
+    
+            hora = h;
+            minuto = m;
+            segundo = s;
+        }
+
+        void incrementaHora(){
+            segundo++;
+            
+            if(segundo >= 60){
+                minuto++;
+                segundo = 0;
+            }
+            if(minuto = 60){
+                hora++;
+                minuto = 0;
+            }
+        }
+
+        string str(){
+            stringstream ss;
+                ss << hora << " : " << minuto << " : " << segundo << endl;
+                return ss.str();
+        }
+};
+
+int main(){
+    int h = 0, m = 0, s = 0;
+    Relogio relogio;
+
+        cin >> h >> m >> s;
+       
+
+        relogio.defineHora(h, m, s);
+        relogio.incrementaHora();
+
+        cout << relogio.str() << endl;
+
+        return 0;
+    
+    }
